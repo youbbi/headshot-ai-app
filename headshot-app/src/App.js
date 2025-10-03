@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import { track } from '@vercel/analytics';
 import UploadPhoto from './components/UploadPhoto';
 import PromptEditor from './components/PromptEditor';
 import AllResultsView from './components/AllResultsView';
@@ -13,6 +14,8 @@ function App() {
   const handleImageUpload = (image) => {
     setUploadedImage(image);
     setStep(2);
+    // Track image upload event
+    track('Image Uploaded');
   };
 
   const handleGenerate = async (prompts) => {
@@ -40,6 +43,10 @@ function App() {
 
       if (data.success) {
         setGeneratedImages(data.generatedImages);
+        // Track when user views generated images
+        track('Generated Images Viewed', {
+          styles: 4
+        });
       } else {
         console.error('Generation failed:', data.error);
         alert('Failed to generate headshots. Please try again.');
