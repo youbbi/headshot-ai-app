@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import UploadPhoto from './components/UploadPhoto';
 import PromptEditor from './components/PromptEditor';
 import AllResultsView from './components/AllResultsView';
@@ -59,7 +60,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <>
+      <Analytics />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-16">
@@ -173,6 +176,7 @@ function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
