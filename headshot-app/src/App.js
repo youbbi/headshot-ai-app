@@ -19,7 +19,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5001/api/generate-all', {
+      const response = await fetch('/api/generate-all', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
