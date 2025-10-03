@@ -3,7 +3,8 @@ import React from 'react';
 const styleNames = {
   'corporate-classic': 'Corporate Classic',
   'creative-professional': 'Creative Professional',
-  'executive-portrait': 'Executive Portrait'
+  'executive-portrait': 'Executive Portrait',
+  'artistic-fusion': 'Artistic Fusion'
 };
 
 const AllResultsView = ({ originalImage, generatedImages, isLoading }) => {
@@ -37,7 +38,7 @@ const AllResultsView = ({ originalImage, generatedImages, isLoading }) => {
       </div>
 
       {/* Generated Images Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {Object.entries(styleNames).map(([styleId, styleName]) => (
           <div key={styleId} className="space-y-3">
             <h3 className="text-lg font-semibold text-purple-300 text-center">

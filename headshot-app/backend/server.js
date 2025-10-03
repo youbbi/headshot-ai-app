@@ -114,9 +114,9 @@ app.post('/api/generate-all', async (req, res) => {
     // Read processed image as base64
     const processedImageBase64 = await imageToBase64(tempProcessedPath);
 
-    // Generate images for all 3 styles
+    // Generate images for all 4 styles
     const results = {};
-    const styles = ['corporate-classic', 'creative-professional', 'executive-portrait'];
+    const styles = ['corporate-classic', 'creative-professional', 'executive-portrait', 'artistic-fusion'];
 
     for (const style of styles) {
       try {

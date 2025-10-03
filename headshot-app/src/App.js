@@ -67,7 +67,7 @@ function App() {
             Professional Headshot AI
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Transform your photo into three stunning professional headshots using AI
+            Transform your photo into four stunning professional headshots using AI
           </p>
 
           {/* Showcase Image */}
