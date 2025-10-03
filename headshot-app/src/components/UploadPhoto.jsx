@@ -47,8 +47,8 @@ const UploadPhoto = ({ onImageUpload }) => {
         onDrop={handleDrop}
         className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
           isDragging
-            ? 'border-blue-500 bg-blue-50'
-            : 'border-gray-300 bg-white hover:border-gray-400'
+            ? 'border-purple-400 bg-purple-900/30'
+            : 'border-purple-500/30 bg-slate-800/50 hover:border-purple-400/50'
         }`}
       >
         {preview ? (
@@ -58,7 +58,7 @@ const UploadPhoto = ({ onImageUpload }) => {
               alt="Preview"
               className="max-h-64 mx-auto rounded-lg shadow-md"
             />
-            <label className="cursor-pointer inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <label className="cursor-pointer inline-block px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg shadow-purple-500/30">
               Change Photo
               <input
                 type="file"
@@ -71,7 +71,7 @@ const UploadPhoto = ({ onImageUpload }) => {
         ) : (
           <div className="space-y-4">
             <svg
-              className="mx-auto h-16 w-16 text-gray-400"
+              className="mx-auto h-16 w-16 text-purple-400"
               stroke="currentColor"
               fill="none"
               viewBox="0 0 48 48"
@@ -83,8 +83,8 @@ const UploadPhoto = ({ onImageUpload }) => {
                 strokeLinejoin="round"
               />
             </svg>
-            <div className="text-gray-600">
-              <label className="cursor-pointer text-blue-600 hover:text-blue-700 font-medium">
+            <div className="text-gray-300">
+              <label className="cursor-pointer text-purple-400 hover:text-purple-300 font-medium">
                 Click to upload
                 <input
                   type="file"
@@ -95,7 +95,7 @@ const UploadPhoto = ({ onImageUpload }) => {
               </label>
               <span> or drag and drop</span>
             </div>
-            <p className="text-sm text-gray-500">PNG, JPG up to 10MB</p>
+            <p className="text-sm text-gray-400">PNG, JPG up to 10MB</p>
           </div>
         )}
       </div>

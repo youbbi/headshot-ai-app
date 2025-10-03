@@ -18,16 +18,16 @@ const AllResultsView = ({ originalImage, generatedImages, isLoading }) => {
 
   return (
     <div className="w-full max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+      <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-8 text-center">
         Your Professional Headshots
       </h2>
 
       {/* Original Image */}
       <div className="mb-8">
-        <h3 className="text-lg font-semibold text-gray-700 text-center mb-4">
+        <h3 className="text-lg font-semibold text-purple-300 text-center mb-4">
           Original Photo
         </h3>
-        <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-4">
+        <div className="max-w-md mx-auto bg-slate-800/50 rounded-lg shadow-lg shadow-purple-500/10 p-4 border border-purple-500/20">
           <img
             src={originalImage}
             alt="Original"
@@ -40,15 +40,15 @@ const AllResultsView = ({ originalImage, generatedImages, isLoading }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {Object.entries(styleNames).map(([styleId, styleName]) => (
           <div key={styleId} className="space-y-3">
-            <h3 className="text-lg font-semibold text-gray-700 text-center">
+            <h3 className="text-lg font-semibold text-purple-300 text-center">
               {styleName}
             </h3>
-            <div className="bg-white rounded-lg shadow-lg p-4 relative">
+            <div className="bg-slate-800/50 rounded-lg shadow-lg shadow-purple-500/10 p-4 border border-purple-500/20 relative">
               {isLoading ? (
-                <div className="aspect-square flex items-center justify-center bg-gray-100 rounded-lg">
+                <div className="aspect-square flex items-center justify-center bg-slate-900/50 rounded-lg">
                   <div className="text-center space-y-4">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                    <p className="text-sm text-gray-600">Generating...</p>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto"></div>
+                    <p className="text-sm text-gray-300">Generating...</p>
                   </div>
                 </div>
               ) : generatedImages?.[styleId] ? (
@@ -60,14 +60,14 @@ const AllResultsView = ({ originalImage, generatedImages, isLoading }) => {
                   />
                   <button
                     onClick={() => downloadImage(generatedImages[styleId], styleId)}
-                    className="mt-3 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    className="mt-3 w-full px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all text-sm shadow-lg shadow-purple-500/30"
                   >
                     Download
                   </button>
                 </>
               ) : (
-                <div className="aspect-square flex items-center justify-center bg-gray-100 rounded-lg">
-                  <p className="text-gray-500 text-sm">Awaiting generation</p>
+                <div className="aspect-square flex items-center justify-center bg-slate-900/50 rounded-lg">
+                  <p className="text-gray-400 text-sm">Awaiting generation</p>
                 </div>
               )}
             </div>

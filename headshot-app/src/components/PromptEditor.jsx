@@ -27,19 +27,19 @@ const PromptEditor = ({ onGenerate }) => {
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
           Review & Edit Prompts
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-300">
           Review the AI prompts for each style. Click "Edit" to customize them.
         </p>
       </div>
 
       <div className="space-y-4">
         {Object.keys(prompts).map((style) => (
-          <div key={style} className="bg-white rounded-lg shadow-md p-6">
+          <div key={style} className="bg-slate-800/50 rounded-lg shadow-lg shadow-purple-500/10 p-6 border border-purple-500/20">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-purple-300">
                 {styleNames[style]}
               </h3>
               <div className="space-x-2">
@@ -47,13 +47,13 @@ const PromptEditor = ({ onGenerate }) => {
                   <>
                     <button
                       onClick={() => handleReset(style)}
-                      className="px-3 py-1 text-sm bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
+                      className="px-3 py-1 text-sm bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
                     >
                       Reset
                     </button>
                     <button
                       onClick={() => setEditingStyle(null)}
-                      className="px-3 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                      className="px-3 py-1 text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded hover:from-green-600 hover:to-emerald-600 transition-all"
                     >
                       Done
                     </button>
@@ -61,7 +61,7 @@ const PromptEditor = ({ onGenerate }) => {
                 ) : (
                   <button
                     onClick={() => setEditingStyle(style)}
-                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                    className="px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded hover:from-purple-600 hover:to-pink-600 transition-all"
                   >
                     Edit
                   </button>
@@ -73,11 +73,11 @@ const PromptEditor = ({ onGenerate }) => {
               <textarea
                 value={prompts[style]}
                 onChange={(e) => handlePromptChange(style, e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-32"
+                className="w-full p-3 bg-slate-900/50 border border-purple-500/30 text-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent min-h-32"
                 rows={4}
               />
             ) : (
-              <p className="text-gray-700 text-sm">{prompts[style]}</p>
+              <p className="text-gray-300 text-sm">{prompts[style]}</p>
             )}
           </div>
         ))}
@@ -86,7 +86,7 @@ const PromptEditor = ({ onGenerate }) => {
       <div className="text-center pt-4">
         <button
           onClick={() => onGenerate(prompts)}
-          className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+          className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50"
         >
           Generate All 3 Headshots
         </button>

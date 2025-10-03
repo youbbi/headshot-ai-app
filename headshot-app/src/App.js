@@ -19,7 +19,12 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/generate-all', {
+      // Use local backend in development, Vercel API in production
+      const apiUrl = process.env.NODE_ENV === 'production'
+        ? '/api/generate-all'
+        : 'http://localhost:5001/api/generate-all';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,46 +59,75 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
             Professional Headshot AI
           </h1>
-          <p className="text-lg text-gray-600">
-            Transform your photo into a professional headshot in seconds
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Transform your photo into three stunning professional headshots using AI
           </p>
+
+          {/* Showcase Image */}
+          {step === 1 && (
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="relative overflow-hidden" style={{ height: '450px' }}>
+                <img
+                  src="/showcase.png"
+                  alt="AI Headshot Examples"
+                  className="rounded-2xl shadow-2xl w-full object-cover object-top"
+                  style={{
+                    maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)'
+                  }}
+                />
+              </div>
+              <p className="text-sm text-gray-400 mt-4 text-center">
+                See the difference: Original → AI Transformation → Elegant Professional
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Progress Indicator */}
         <div className="max-w-2xl mx-auto mb-12">
-          <div className="flex items-center justify-between">
-            {[1, 2, 3].map((num) => (
-              <div key={num} className="flex items-center flex-1">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                    step >= num
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-300 text-gray-600'
-                  }`}
-                >
-                  {num}
-                </div>
-                {num < 3 && (
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { num: 1, label: 'Upload' },
+              { num: 2, label: 'Edit Prompts' },
+              { num: 3, label: 'Results' }
+            ].map(({ num, label }, index) => (
+              <div key={num} className="flex flex-col items-center">
+                <div className="flex items-center w-full">
+                  {index > 0 && (
+                    <div
+                      className={`flex-1 h-1 mr-2 transition-all ${
+                        step > index ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gray-700'
+                      }`}
+                    />
+                  )}
                   <div
-                    className={`flex-1 h-1 mx-2 ${
-                      step > num ? 'bg-blue-600' : 'bg-gray-300'
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                      step >= num
+                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50'
+                        : 'bg-gray-700 text-gray-400'
                     }`}
-                  />
-                )}
+                  >
+                    {num}
+                  </div>
+                  {index < 2 && (
+                    <div
+                      className={`flex-1 h-1 ml-2 transition-all ${
+                        step > num ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gray-700'
+                      }`}
+                    />
+                  )}
+                </div>
+                <span className="mt-2 text-sm text-gray-400 text-center">{label}</span>
               </div>
             ))}
-          </div>
-          <div className="flex justify-between mt-2 text-sm text-gray-600">
-            <span>Upload</span>
-            <span>Edit Prompts</span>
-            <span>Results</span>
           </div>
         </div>
 
