@@ -2,6 +2,8 @@
 
 A web application that transforms user-uploaded photos into professional headshots using Google's Gemini Imagen 3 API. Upload a photo, customize AI prompts, and generate three different professional headshot styles simultaneously.
 
+> **Credit:** this project is heavily inspired by [Peter Yang](https://creatoreconomy.so) and his newsletter [Behind the Craft](https://creatoreconomy.so). The idea and approach are his; this is my build of it.
+
 ![Professional Headshot AI](https://img.shields.io/badge/React-18.x-blue) ![Express](https://img.shields.io/badge/Express-4.x-green) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-cyan)
 
 ## Features
@@ -211,6 +213,7 @@ This project is open source and available under the MIT License.
 
 ## Acknowledgments
 
+- Inspired by [Peter Yang](https://creatoreconomy.so) and [Behind the Craft](https://creatoreconomy.so)
 - Built with [React](https://react.dev/)
 - Styled with [Tailwind CSS](https://tailwindcss.com/)
 - Powered by [Google Gemini API](https://ai.google.dev/)
